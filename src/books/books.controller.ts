@@ -29,7 +29,11 @@ export class BooksController {
   @Get('/')
   async getBooks() {
     const books = await this.booksService.getBooks();
-    return books;
+    return {
+      status: 'success',
+      message: 'Books fetch successfully',
+      data: books,
+    };
   }
 
   @Get('/:id')
