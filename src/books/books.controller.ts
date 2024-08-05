@@ -5,6 +5,7 @@ import {
   Post,
   Put,
   Patch,
+  Delete,
   UseFilters,
   Param,
   UseInterceptors,
@@ -72,6 +73,11 @@ export class BooksController {
       success: true,
       message: 'Book updated successfully',
     }
+  }
+
+  @Delete('/:id')
+  async deleteBook(@Param('id') id: string) {
+    return this.booksService.deleteBook(id);
   }
 
 }

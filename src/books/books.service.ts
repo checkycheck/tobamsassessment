@@ -70,5 +70,19 @@ export class BooksService {
         payload,
         { new: true }
     );
-}
+  }
+
+  async deleteBook(id: string) {
+    const result = await this.booksModel.findByIdAndDelete(id);
+    if (!result) {
+      throw new HttpException(
+        { success: false, message: 'Book not found' },
+        404,
+      );
+    }
+    return {
+      success: true,
+      message: 'Book deleted successfully',
+    };
+  }
 }
